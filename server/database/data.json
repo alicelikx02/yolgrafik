@@ -1,8 +1,10 @@
-{
-  "users": [],
-  "haberler": [],
-  "programcilar": [],
-  "sarkilar": [],
-  "sponsorlar": [],
-  "ayarlar": {}
-}
+"users": [
+  {
+    "id": 1,
+    "username": "admin",
+    "password": "123456",
+    "email": "yolgrafik46@gmail.com",
+    "name": "Admin",
+    "role": "admin"
+  }
+]
