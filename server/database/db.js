@@ -2,6 +2,7 @@ import { Low } from 'lowdb'
 import { JSONFile } from 'lowdb/node'
 import { join, dirname } from 'path'
 import { fileURLToPath } from 'url'
+import fs from 'fs'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const file = join(__dirname, 'data.json')
@@ -24,15 +25,19 @@ const defaultData = {
   }
 }
 
+// ✅ Render'da dosya yoksa oluştur
+if (!fs.existsSync(file)) {
+  fs.writeFileSync(file, JSON.stringify(defaultData, null, 2))
+}
+
 const adapter = new JSONFile(file)
 
 // ✅ lowdb v3+ için default data burada verilmek zorunda
 const db = new Low(adapter, defaultData)
 
-// Oku
 await db.read()
 
-// Dosya boşsa null gelebilir
+// Dosya boşsa / null geldiyse default ata
 db.data ||= defaultData
 
 // Eksik alanları tamamla (var olan veriyi silmez)
@@ -43,7 +48,6 @@ db.data.sarkilar ||= []
 db.data.sponsorlar ||= []
 db.data.ayarlar ||= defaultData.ayarlar
 
-// Yaz (dosya yoksa oluşturur)
 await db.write()
 
 export default db
