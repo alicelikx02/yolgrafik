@@ -1,0 +1,114 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 199 84% 45%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 199 84% 45%;
+    --radius: 0.625rem;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+    
+    /* Radyo Yol Colors */
+    --radyo-blue: 199 84% 45%;
+    --radyo-dark-blue: 210 100% 25%;
+    --radyo-red: 0 84% 50%;
+    --radyo-yellow: 48 100% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #0ea5e9;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #0284c7;
+}
+
+/* Audio visualizer animation */
+@keyframes sound-bar {
+  0%, 100% { height: 10px; }
+  50% { height: 40px; }
+}
+
+.sound-bar {
+  animation: sound-bar 0.5s ease-in-out infinite;
+}
+
+.sound-bar:nth-child(2) { animation-delay: 0.1s; }
+.sound-bar:nth-child(3) { animation-delay: 0.2s; }
+.sound-bar:nth-child(4) { animation-delay: 0.3s; }
+.sound-bar:nth-child(5) { animation-delay: 0.4s; }
+.sound-bar:nth-child(6) { animation-delay: 0.5s; }
+.sound-bar:nth-child(7) { animation-delay: 0.6s; }
+
+/* Slider dots */
+.slider-dot {
+  @apply w-3 h-3 rounded-full bg-gray-400 cursor-pointer transition-all;
+}
+
+.slider-dot.active {
+  @apply bg-sky-500;
+}
+
+/* Program card hover */
+.program-card {
+  @apply transition-all duration-300;
+}
+
+.program-card:hover {
+  @apply transform -translate-y-1 shadow-lg;
+}
+
+/* News card */
+.news-card {
+  @apply bg-white border border-gray-200 rounded-lg overflow-hidden transition-all duration-300;
+}
+
+.news-card:hover {
+  @apply shadow-lg border-sky-300;
+}
